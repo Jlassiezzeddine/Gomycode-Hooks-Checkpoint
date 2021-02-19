@@ -1,0 +1,9 @@
+.App-content {
+  display: block;
+  height: 90vh;
+  width: 100%;
+  background-color: aquamarine;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  overflow-y: auto;
+}

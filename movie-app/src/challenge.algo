@@ -1,0 +1,10 @@
+ALGORITHM permutation_circle
+VAR
+    x, y, z: INTEGER;
+
+BEGIN
+    Read(x)
+    Read(y)
+    Read(z)
+    set_instructions
+END
