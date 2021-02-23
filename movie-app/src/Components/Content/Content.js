@@ -1,11 +1,14 @@
 import React from "react";
 
+import MovieList from "../MovieList/MovieList";
 import "./Content.scss";
 
-const Content = () => {
+const Content = ({ movies }) => {
   return (
     <div className="App-content">
-      <p>this is the content</p>
+      <div className="container">
+        <MovieList movies={movies}></MovieList>
+      </div>
     </div>
   );
 };

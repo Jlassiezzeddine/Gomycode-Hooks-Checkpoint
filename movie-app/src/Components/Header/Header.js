@@ -11,11 +11,21 @@ class Header extends Component {
             <a href="#">Movies</a>
           </div>
           <div className="search--field">
-            <input type="text" name="search" id="search" />
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search movie"
+            />
+            <i class="fas fa-search"></i>
           </div>
           <div className="nav--buttons">
-            <button className="filter--button">Filter</button>
-            <button className="add--movie">Add</button>
+            <button className="filter--button">
+              <i class="fas fa-filter"></i>Filter
+            </button>
+            <button className="add--movie--button">
+              <i class="fas fa-plus"></i>Add
+            </button>
           </div>
         </nav>
       </div>
