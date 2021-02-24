@@ -9,8 +9,10 @@ const MovieList = ({ movies, searchTerm, filterValue }) => {
   return (
     <div className="row movie--list--wrapper">
       {movies
-        .filter((item) => item.title.includes(searchTerm))
-        .filter((item) => item.rate <= filterValue)
+
+        .filter(
+          (item) => item.title.includes(searchTerm) && item.rate <= filterValue
+        )
         .map((movieItem, index) => (
           <MovieCard key={index} movie={movieItem} />
         ))}
