@@ -30,12 +30,14 @@ function App() {
 
   const [movieList, setMovieList] = useState(movies);
   const [searchTerm, setSearechTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("10");
+  const [filterValue, setFilterValue] = useState(10);
+  const [inputValueDisplay, setInputValueDisplay] = useState(10);
   const addItem = (newmovie) => {
     setMovieList([...movieList, newmovie]);
   };
   const rateFilter = (rateValue) => {
     setFilterValue(rateValue);
+    setInputValueDisplay(rateValue);
   };
   const searchMovie = (search) => {
     setSearechTerm(search);
@@ -47,6 +49,7 @@ function App() {
         addItem={addItem}
         searchMovie={searchMovie}
         rateFilter={rateFilter}
+        inputValueDisplay={inputValueDisplay}
       ></Header>
 
       <Content

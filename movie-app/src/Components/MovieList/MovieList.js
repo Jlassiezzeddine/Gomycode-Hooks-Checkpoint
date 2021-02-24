@@ -6,16 +6,17 @@ import MovieCard from "../MovieCard/MovieCard";
 
 const MovieList = ({ movies, searchTerm, filterValue }) => {
   console.log(typeof filterValue);
+  let filteredMovies = movies.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      item.rate <= filterValue
+  );
+  console.log(filteredMovies);
   return (
     <div className="row movie--list--wrapper">
-      {movies
-
-        .filter(
-          (item) => item.title.includes(searchTerm) && item.rate <= filterValue
-        )
-        .map((movieItem, index) => (
-          <MovieCard key={index} movie={movieItem} />
-        ))}
+      {filteredMovies.map((movieItem, index) => (
+        <MovieCard key={index} movie={movieItem} />
+      ))}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const AddMovie = ({ displayAddMovie, addItem }) => {
   const [title, setTitle] = useState("");
   const [posterUrl, setPosterUrl] = useState("");
   const [description, setDescription] = useState("");
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState(0);
 
   const handleSubmit = (e) => {
     addItem({ title, posterUrl, description, rate });
@@ -52,11 +52,12 @@ const AddMovie = ({ displayAddMovie, addItem }) => {
           </div>
           <div className="form--input">
             <label htmlFor="rate">Rate :</label>
+
             <input
               type="text"
               name="rate"
               id="rate"
-              onChange={(e) => setRate(e.target.value)}
+              onChange={(e) => setRate(Number(e.target.value))}
             />
           </div>
           <input type="submit" value="Add Movie" />
