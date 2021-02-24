@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import "./Header.scss";
 
 import AddMovie from "../AddMovie/AddMovie";
-import Filter from "../Filter/Filter";
 
-const Header = ({ addItem, searchMovie }) => {
+const Header = ({ addItem, searchMovie, rateFilter }) => {
   const [addMovieDisplay, setAddMovieDisplay] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  searchMovie(searchInput);
-  const handleClick = () => {
+  const displayAddMovie = () => {
     setAddMovieDisplay(!addMovieDisplay);
   };
   return (
@@ -24,14 +21,11 @@ const Header = ({ addItem, searchMovie }) => {
             name="search"
             id="search"
             placeholder="Search movie"
-            onChange={(e) => setSearchInput(e.target.value)}
+            onChange={(e) => searchMovie(e.target.value)}
           />
           <i className="fas fa-search"></i>
         </div>
         <div className="nav--buttons">
-          <button className="filter--button">
-            <i className="fas fa-filter"></i>Filter
-          </button>
           <button
             className="add--movie--button"
             onClick={() => setAddMovieDisplay(!addMovieDisplay)}
@@ -39,11 +33,21 @@ const Header = ({ addItem, searchMovie }) => {
             <i className="fas fa-plus"></i>Add
           </button>
         </div>
+        {addMovieDisplay && (
+          <AddMovie displayAddMovie={displayAddMovie} addItem={addItem} />
+        )}
+        <div className="rate--wrapper">
+          <input
+            type="range"
+            name="rate"
+            min="0"
+            max="10"
+            id="rate"
+            defaultValue="10"
+            onChange={(e) => rateFilter(e.target.value)}
+          />
+        </div>
       </nav>
-      {addMovieDisplay && (
-        <AddMovie handleClick={handleClick} addItem={addItem} />
-      )}
-      <Filter />
     </div>
   );
 };

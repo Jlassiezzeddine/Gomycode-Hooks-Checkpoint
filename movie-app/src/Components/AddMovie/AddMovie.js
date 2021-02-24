@@ -2,7 +2,7 @@ import "./AddMovie.scss";
 
 import React, { useState } from "react";
 
-const AddMovie = ({ handleClick, addItem }) => {
+const AddMovie = ({ displayAddMovie, addItem }) => {
   const [title, setTitle] = useState("");
   const [posterUrl, setPosterUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -10,7 +10,7 @@ const AddMovie = ({ handleClick, addItem }) => {
 
   const handleSubmit = (e) => {
     addItem({ title, posterUrl, description, rate });
-    handleClick();
+    displayAddMovie();
     e.preventDefault();
   };
   return (
@@ -18,7 +18,7 @@ const AddMovie = ({ handleClick, addItem }) => {
       <div className="add--movie--card">
         <div className="add--movie--card--top">
           <h2 className="add--movie--card--title">Add Movie</h2>
-          <div className="add--movie--card--close" onClick={handleClick}>
+          <div className="add--movie--card--close" onClick={displayAddMovie}>
             <i className="fas fa-times"></i>
           </div>
         </div>
