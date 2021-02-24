@@ -8,7 +8,7 @@ const MovieList = ({ movies }) => {
   return (
     <div className="row movie--list--wrapper">
       {movies.map((movieItem, index) => (
-        <MovieCard id={index} movie={movieItem} />
+        <MovieCard key={index} movie={movieItem} />
       ))}
     </div>
   );

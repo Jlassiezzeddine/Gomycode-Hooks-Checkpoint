@@ -1,10 +1,11 @@
 import "./App.css";
+import React, { useState } from "react";
 import Header from "./Components/Header/Header";
 import Content from "./Components/Content/Content";
+
 function App() {
   let movies = [
     {
-      id: "00154qsd",
       title: "movie one title",
       description: "Movie One Description",
       posterUrl:
@@ -12,7 +13,6 @@ function App() {
       rate: 6.7,
     },
     {
-      id: "qsd13548s",
       title: "movie two title",
       description: "Movie two Description",
       posterUrl:
@@ -20,7 +20,6 @@ function App() {
       rate: 5.8,
     },
     {
-      id: "qsd13548s",
       title: "movie three title",
       description: "Movie two Description",
       posterUrl:
@@ -28,10 +27,39 @@ function App() {
       rate: 5.8,
     },
   ];
+  const [movieList, setMovieList] = useState(movies);
+  const [addMovieItem, setAddMovieItem] = useState({
+    title: "",
+    posterUrl: "",
+    description: "",
+    rate: "",
+  });
+  let newMovie = {};
+  const changeValues = (title, posterUrl, description, rate) => {
+    setAddMovieItem({
+      title: title,
+      posterUrl: posterUrl,
+      description: description,
+      rate: rate,
+    });
+
+    newMovie = {
+      title: title,
+      posterUrl: posterUrl,
+      description: description,
+      rate: rate,
+    };
+    movies.push(newMovie);
+    setMovieList(movies);
+    movies = movies;
+    console.log(addMovieItem);
+  };
+  const addItem = () => {};
   return (
     <div className="App">
-      <Header></Header>
-      <Content movies={movies}></Content>
+      <Header changeValues={changeValues} addItem={addItem}></Header>
+
+      <Content movies={movieList}></Content>
     </div>
   );
 }

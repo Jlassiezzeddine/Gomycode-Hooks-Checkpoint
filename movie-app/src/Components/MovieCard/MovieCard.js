@@ -2,9 +2,9 @@ import "./MovieCard.scss";
 
 import React from "react";
 
-const MovieCard = ({ movie, key }) => {
+const MovieCard = ({ movie }) => {
   return (
-    <div key={key} id={movie.id} className="col-lg-4 col-md-4 col-sm-6 ">
+    <div className="col-lg-4 col-md-4 col-sm-6 ">
       <div className="movie--card--wrapper">
         <div className="movie--card--img">
           <img src={movie.posterUrl} alt={movie.title} />
@@ -13,7 +13,7 @@ const MovieCard = ({ movie, key }) => {
           <h2 className="movie--card--title">{movie.title}</h2>
           <p className="movie--card--description">{movie.description}</p>
           <div className="movie--card--rate">
-            <i class="fas fa-star"></i>
+            <i className="fas fa-star"></i>
             <span>{movie.rate}</span>
           </div>
         </div>
