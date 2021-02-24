@@ -1,16 +1,15 @@
 import "./AddMovie.scss";
 
-import React from "react";
+import React, { useState } from "react";
 
-const AddMovie = ({ handleClick, changeValues, addItem }) => {
+const AddMovie = ({ handleClick, addItem }) => {
+  const [title, setTitle] = useState("");
+  const [posterUrl, setPosterUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [rate, setRate] = useState("");
+
   const handleSubmit = (e) => {
-    changeValues(
-      e.target.title.value,
-      e.target.posterUrl.value,
-      e.target.description.value,
-      e.target.rate.value
-    );
-    addItem();
+    addItem({ title, posterUrl, description, rate });
     handleClick();
     e.preventDefault();
   };
@@ -26,19 +25,39 @@ const AddMovie = ({ handleClick, changeValues, addItem }) => {
         <form onSubmit={handleSubmit}>
           <div className="form--input">
             <label htmlFor="title">Title :</label>
-            <input type="text" name="title" id="title" />
+            <input
+              type="text"
+              name="title"
+              id="title"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className="form--input">
             <label htmlFor="posterUrl">Poster Url :</label>
-            <input type="text" name="posterUrl" id="posterUrl" />
+            <input
+              type="text"
+              name="posterUrl"
+              id="posterUrl"
+              onChange={(e) => setPosterUrl(e.target.value)}
+            />
           </div>
           <div className="form--input">
             <label htmlFor="description">Description :</label>
-            <textarea type="text" name="description" id="description" />
+            <textarea
+              type="text"
+              name="description"
+              id="description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className="form--input">
             <label htmlFor="rate">Rate :</label>
-            <input type="text" name="rate" id="rate" />
+            <input
+              type="text"
+              name="rate"
+              id="rate"
+              onChange={(e) => setRate(e.target.value)}
+            />
           </div>
           <input type="submit" value="Add Movie" />
         </form>

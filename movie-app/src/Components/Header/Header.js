@@ -5,9 +5,10 @@ import "./Header.scss";
 import AddMovie from "../AddMovie/AddMovie";
 import Filter from "../Filter/Filter";
 
-const Header = ({ changeValues, addItem }) => {
+const Header = ({ addItem, searchMovie }) => {
   const [addMovieDisplay, setAddMovieDisplay] = useState(false);
-
+  const [searchInput, setSearchInput] = useState("");
+  searchMovie(searchInput);
   const handleClick = () => {
     setAddMovieDisplay(!addMovieDisplay);
   };
@@ -23,6 +24,7 @@ const Header = ({ changeValues, addItem }) => {
             name="search"
             id="search"
             placeholder="Search movie"
+            onChange={(e) => setSearchInput(e.target.value)}
           />
           <i className="fas fa-search"></i>
         </div>
@@ -39,11 +41,7 @@ const Header = ({ changeValues, addItem }) => {
         </div>
       </nav>
       {addMovieDisplay && (
-        <AddMovie
-          handleClick={handleClick}
-          addItem={addItem}
-          changeValues={changeValues}
-        />
+        <AddMovie handleClick={handleClick} addItem={addItem} />
       )}
       <Filter />
     </div>
